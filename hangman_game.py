@@ -71,11 +71,15 @@ translation = {
     ],
     "lost": [
         "\nGAME OVER! YOU LOST!",
-        "\nИГРА ОКОНЧЕНА! Вы проиграли!",
+        "\nИГРА ОКОНЧЕНА! ВЫ ПРОИГРАЛИ!",
         "\nŽAIDIMAS BAIGTAS! TU PRALOŠEI!",
     ],
     "word": ["Word: ", "Слово: ", "Žodis: "],
-    "word_show": ["\nThe word was ", "\nБыло загадано слово ", "\nŽodis buvo "],
+    "word_show": [
+        "\nThe secret word: ",
+        "\nБыло загадано слово: ",
+        "\nŽodis, kurio neatspėjai: ",
+    ],
     "lives": ["Lives left: ", "Оставшиеся жизни: ", "Gyvybių skaičius: "],
     "difficult": [
         "Choose game difficulty [easy/medium/hard/expert]: ",
@@ -107,7 +111,7 @@ def choose_language():
     answer = ["1", "2", "3"]
     while not game_language in answer:
         game_language = input(
-            "\nChoose game language [1:English 2:Русский 3:Lietuviškai]\nType a number [1/2/3]: "
+            "\nChoose game language [1:English 2:Русский 3:Lietuvių]\nType a number [1/2/3]: "
         )
     if game_language == "1":
         return ("EN", 1)
@@ -251,9 +255,9 @@ def hangman_game():
     # The end of the game
     if len(failed_guess) == lives_number:
         print(translation["word_show"][language[1] - 1] + word)
-        print(translation["won"][language[1] - 1])
-    else:
         print(translation["lost"][language[1] - 1])
+    else:
+        print(translation["won"][language[1] - 1])
 
     # Repeat the game/leave
     play_the_game_again(language)
